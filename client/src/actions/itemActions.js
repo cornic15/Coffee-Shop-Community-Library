@@ -3,17 +3,17 @@ import api from '../api';
 
 // TODO - make a utility for logging?
 
-export const fetchAllItems = () => {
+export const fetchAllBooks = () => {
     return (dispatch) => {
-        dispatch({ type: types.LOADING_ALL_ITEMS });
+        dispatch({ type: types.LOADING_ALL_BOOKS });
 
-        return api.getAllItems()
+        return api.getAllBooks()
             .then(resp => {
                 const { items } = resp.data;
                 console.log("getAllItems: resp");
                 console.log(items);
                 dispatch({
-                    type: types.SET_ALL_ITEMS,
+                    type: types.SET_ALL_BOOKS,
                     items,
                 });
             })
@@ -25,18 +25,18 @@ export const fetchAllItems = () => {
     };
 };
 
-export const fetchSingleItem = (itemId) => {
+export const fetchSingleBook = (itemId) => {
     return (dispatch) => {
-        dispatch({ type: types.LOADING_SINGLE_ITEM });
+        dispatch({ type: types.LOADING_SINGLE_BOOK });
 
-        return api.getItemById(itemId)
+        return api.getBookById(itemId)
             .then(resp => {
                 console.log("getItemById: resp");
                 console.log(resp);
                 if (resp.data.success) {
                     const { item } = resp.data;
                     dispatch({
-                        type: types.GET_SINGLE_ITEM,
+                        type: types.GET_SINGLE_BOOK,
                         item,
                     });
                 }
@@ -50,9 +50,9 @@ export const fetchSingleItem = (itemId) => {
     };
 };
 
-export const insertSingleItem = item => {
+export const insertSingleBook = item => {
     return (dispatch) => {
-        dispatch({ type: types.LOADING_SINGLE_ITEM });
+        dispatch({ type: types.LOADING_SINGLE_BOOK });
 
         return api.insertItem(item)
             .then(resp => {
@@ -61,7 +61,7 @@ export const insertSingleItem = item => {
                 if ((resp.data || {}).success) {
                     const newItem = JSON.parse(resp.config.data);
                     dispatch({
-                        type: types.SET_SINGLE_ITEM,
+                        type: types.SET_SINGLE_BOOK,
                         item: {
                             _id: resp.data.id,
                             ...newItem
@@ -78,9 +78,9 @@ export const insertSingleItem = item => {
     };
 };
 
-export const updateSingleItem = item => {
+export const updateSingleBook = item => {
     return (dispatch) => {
-        dispatch({ type: types.LOADING_SINGLE_ITEM });
+        dispatch({ type: types.LOADING_SINGLE_BOOK });
 
         return api.updateItemById(item._id, item)
             .then(resp => {
@@ -89,7 +89,7 @@ export const updateSingleItem = item => {
                 if ((resp.data || {}).success) {
                     const newItem = JSON.parse(resp.config.data);
                     dispatch({
-                        type: types.UPDATE_SINGLE_ITEM,
+                        type: types.UPDATE_SINGLE_BOOK,
                         item: {
                             _id: resp.data.id,
                             ...newItem
@@ -108,14 +108,14 @@ export const updateSingleItem = item => {
 
 export const deleteSingleItem = itemId => {
     return (dispatch) => {
-        dispatch({ type: types.LOADING_SINGLE_ITEM });
+        dispatch({ type: types.LOADING_SINGLE_BOOK });
 
         return api.deleteItemById(itemId)
             .then(resp => {
                 console.log("deleteItemById: resp");
                 console.log(resp);
                 dispatch({
-                    type: types.RELOAD_ITEMS
+                    type: types.RELOAD_BOOKS
                 });
                 return resp;
             })

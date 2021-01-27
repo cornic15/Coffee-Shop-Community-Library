@@ -3,49 +3,49 @@ import * as types from '../actions/actionTypes';
 const initialState = {
     loading: false,
     loaded: false,
-    items: [],
-    item: null
+    books: [],
+    book: null
 }
 
 const itemReducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.LOADING_SINGLE_ITEM:
-        case types.LOADING_ALL_ITEMS:
+        case types.LOADING_SINGLE_BOOK:
+        case types.LOADING_ALL_BOOKS:
             return {
                 ...state,
                 loading: true,
                 loaded: false
             };
-        case types.SET_ALL_ITEMS:
+        case types.SET_ALL_BOOKS:
             return {
                 ...state,
                 loading: false,
                 loaded: true,
-                items: action.items
+                items: action.books
             };
-        case types.GET_SINGLE_ITEM:
+        case types.GET_SINGLE_BOOK:
             return {
                 ...state,
                 loading: false,
                 loaded: true,
-                item: action.item
+                item: action.book
             };
-        case types.SET_SINGLE_ITEM:
+        case types.SET_SINGLE_BOOK:
             return {
                 ...state,
                 loading: false,
                 loaded: true,
-                items: [ ...state.items, action.item ],
-                item: action.item
+                items: [ ...state.book, action.book ],
+                item: action.book
             };
-        case types.UPDATE_SINGLE_ITEM:
+        case types.UPDATE_SINGLE_BOOK:
             console.log('initial:')
-            console.log(state.items);
-            let newItems = state.items.map((item, i) => {
-                if (item._id === action.item._id) {
-                    item = action.item;
+            console.log(state.books);
+            let newItems = state.items.map((book, i) => {
+                if (book._id === action.book._id) {
+                    book = action.book;
                 }
-                return item;
+                return book;
             });
             console.log('altered:')
             console.log(newItems);
@@ -53,8 +53,8 @@ const itemReducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 loaded: true,
-                items: newItems,
-                item: action.item
+                books: newItems,
+                book: action.book
             };
         // TODO: after users are created
         // case types.FETCH_USER_ITEM:

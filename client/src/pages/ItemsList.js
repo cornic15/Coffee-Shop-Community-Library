@@ -80,7 +80,7 @@ class ItemsTable extends Component {
         console.log(this.props);
         // if (((this.props.itemData || {}).items || []).length) return;
 
-        this.props.fetchAllItems()
+        this.props.fetchAllBooks()
     }
 
     handleRemoveItem = data => {

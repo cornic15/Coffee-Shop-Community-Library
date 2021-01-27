@@ -9,7 +9,8 @@
         "yarn": ">=1.22.5"
     },
     "scripts": {
-        "startDev": "cd ./server && npm run server && cd ../client && npm run start"
+        "startDevServer": "cd ./server && npm run start",
+        "startDevClient": "cd ./client && npm run start"
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -30,7 +31,13 @@
         "@upstatement/prettier-config": "^0.3.0"
     },
     "dependencies": {
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "mongoose": "^5.11.13",
         "node-notifier": "^8.0.1",
-        "object-path": "^0.11.5"
+        "nodemon": "^2.0.7",
+        "object-path": "^0.11.5",
+        "react-scripts": "^4.0.1"
     }
 }

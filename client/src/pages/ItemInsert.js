@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { insertSingleItem } from '../actions';
+import { insertSingleBook } from '../actions';
 import { shared } from '../constants';
 
 import styled from 'styled-components';
@@ -100,7 +100,7 @@ class ItemInsert extends Component {
     handleChangeDays = async event => {
         const { checked, value } = event.target;
         const { daysOfWeek } = this.state;
-        const { DAYS_OF_WEEK } = shared;
+       const { DAYS_OF_WEEK } = shared;
 
         if (checked && !daysOfWeek[value]) {
             daysOfWeek[value] = DAYS_OF_WEEK[value];
@@ -140,7 +140,7 @@ class ItemInsert extends Component {
         } = this.state;
         const item = { name, daysOfWeek, timeframeNote, priority, content };
 
-        this.props.insertSingleItem(item)
+        this.props.insertSingleBook(item)
             .then(resp => {
                 console.log("handleInsertItem: resp");
                 console.log(resp);
@@ -242,6 +242,6 @@ class ItemInsert extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ insertSingleItem }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ insertSingleBook }, dispatch);
 
 export default connect(null, mapDispatchToProps)(ItemInsert);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchSingleItem, updateSingleItem } from '../actions';
+import { fetchSingleBook, updateSingleBook } from '../actions';
 import { shared } from '../constants';
 
 import styled from 'styled-components';
@@ -79,7 +79,7 @@ class ItemUpdate extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchSingleItem(this.props.itemId)
+        this.props.fetchSingleBook(this.props.itemId)
             .then(resp => {
                 const { item } = resp.data;
                 this.setState({ ...item });
@@ -134,7 +134,7 @@ class ItemUpdate extends Component {
         } = this.state;
         const item = { _id, name, daysOfWeek, timeframeNote, priority, content };
 
-        return this.props.updateSingleItem(item)
+        return this.props.updateSingleBook(item)
             .then(resp => {
                 console.log("handleUpdateItem: resp");
                 console.log(resp);
@@ -245,6 +245,6 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({ fetchSingleItem, updateSingleItem }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ fetchSingleBook, updateSingleBook }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemUpdate);

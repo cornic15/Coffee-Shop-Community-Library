@@ -10,7 +10,7 @@ const api = axios.create({
 });
 
 // TODO - use interceptors for better error handling: https://masteringjs.io/tutorials/axios/interceptors#error-handling
-
+/*
 export const getAllItems = payload => api.get(`/items`, payload);
 export const getItemById = id => api.get(`/item/${id}`);
 export const insertItem = payload => api.post(`/item`, payload);
@@ -24,5 +24,26 @@ const apis = {
     updateItemById,
     deleteItemById,
 };
+*/
+
+
+export const getAllBooks = payload => api.get(`/book`, payload);
+export const getBookById = id => api.get(`/book/${id}`);
+export const insertBook = payload => api.post(`/book`, payload);
+export const updateBookById = (id, payload) => api.put(`/book/${id}`, payload);
+export const deleteBookById = id => api.delete(`/book/${id}`);
+
+const apis = {
+    getAllBooks,
+    getBookById,
+    insertBook,
+    updateBookById,
+    deleteBookById,
+};
+
+
+
+
 
 export default apis;
+
