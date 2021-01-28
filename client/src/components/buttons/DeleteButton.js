@@ -4,19 +4,19 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Delete = styled.div.attrs({
-    className: "delete-item-btn"
+    className: "delete-book-btn"
 })`
   color: #ff0000;
   cursor: pointer;
 `;
 
 class DeleteButton extends Component {
-    confirmDeleteItem = event => {
+    confirmDeletebook = event => {
         event.preventDefault();
 
         if (
             window.confirm(
-                `Do you want to permanently delete this item? ${this.props.id}`,
+                `Do you want to permanently delete this book? ${this.props.id}`,
             )
         ) {
             this.props.onDelete(this.props.id);
@@ -25,7 +25,7 @@ class DeleteButton extends Component {
     }
 
     render() {
-        return <Delete onClick={this.confirmDeleteItem}>Delete Item</Delete>;
+        return <Delete onClick={this.confirmDeletebook}>Delete book</Delete>;
     }
 }
 

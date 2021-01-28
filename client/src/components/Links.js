@@ -26,7 +26,7 @@ const List = styled.div.attrs({
     }
 `;
 
-const Item = styled.div.attrs({
+const Book = styled.div.attrs({
     // className: 'collapse navbar-collapse',
 })`
     @media screen and (max-width: 420px) {
@@ -59,27 +59,27 @@ class Links extends Component {
                 </HomeWrapper>
                 <Collapse>
                     <List>
-                        <Item>
+                        <Book>
                             <Link
-                                to="/items"
+                                to="/books"
                                 className="nav-link"
                             >
-                                Items
+                                books
                             </Link>
-                        </Item>
-                        <Item>
+                        </Book>
+                        <Book>
                             <Link
-                                to="/item/create"
+                                to="/book/create"
                                 className="nav-link"
                             >
-                                Create Item
+                                Create book
                             </Link>
-                        </Item>
-                        <Item>
-                            <Link to="/items/react-table-v6" className="nav-link">
-                                Items (react-table-v6)
+                        </Book>
+                        <Book>
+                            <Link to="/books/react-table-v6" className="nav-link">
+                                books (react-table-v6)
                             </Link>
-                        </Item>
+                        </Book>
                     </List>
                 </Collapse>
             </React.Fragment>

@@ -11,25 +11,25 @@ const api = axios.create({
 
 // TODO - use interceptors for better error handling: https://masteringjs.io/tutorials/axios/interceptors#error-handling
 /*
-export const getAllItems = payload => api.get(`/items`, payload);
-export const getItemById = id => api.get(`/item/${id}`);
-export const insertItem = payload => api.post(`/item`, payload);
-export const updateItemById = (id, payload) => api.put(`/item/${id}`, payload);
-export const deleteItemById = id => api.delete(`/item/${id}`);
+export const getAllbooks = payload => api.get(`/books`, payload);
+export const getbookById = id => api.get(`/book/${id}`);
+export const insertbook = payload => api.post(`/book`, payload);
+export const updatebookById = (id, payload) => api.put(`/book/${id}`, payload);
+export const deletebookById = id => api.delete(`/book/${id}`);
 
 const apis = {
-    getAllItems,
-    getItemById,
-    insertItem,
-    updateItemById,
-    deleteItemById,
+    getAllbooks,
+    getbookById,
+    insertbook,
+    updatebookById,
+    deletebookById,
 };
 */
 
 
-export const getAllBooks = payload => api.get(`/book`, payload);
+export const getAllBooks = payload => api.get(`/books`, payload);
 export const getBookById = id => api.get(`/book/${id}`);
-export const insertBook = payload => api.post(`/book`, payload);
+export const insertBook = payload => api.post(`/books`, payload);
 export const updateBookById = (id, payload) => api.put(`/book/${id}`, payload);
 export const deleteBookById = id => api.delete(`/book/${id}`);
 

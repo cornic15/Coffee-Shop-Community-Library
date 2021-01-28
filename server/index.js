@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const db = require('./db');
-const itemRouter = require('./routes/item-router');
+const bookRouter = require('./routes/book-router');
 
 const app = express();
 const apiPort = 3000;
@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app.use('/api', itemRouter);
+app.use('/api', bookRouter);
 
 app.listen(apiPort, () => {
     console.log(`[Hack.Diversity React Template] - Server running on port ${apiPort}`);

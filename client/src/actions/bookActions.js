@@ -9,110 +9,111 @@ export const fetchAllBooks = () => {
 
         return api.getAllBooks()
             .then(resp => {
-                const { items } = resp.data;
-                console.log("getAllItems: resp");
-                console.log(items);
+                const { books } = resp.data;
+                console.log("getAllBooks: resp");
+                console.log(books);
+                console.log(resp.data)
                 dispatch({
                     type: types.SET_ALL_BOOKS,
-                    items,
+                    books,
                 });
             })
             .catch(err => {
-                console.error(`ERROR in 'getAllItems': ${err}`);
+                console.error(`ERROR in 'getAllBooks': ${err}`);
                 console.error(err);
                 return err;
             });
     };
 };
 
-export const fetchSingleBook = (itemId) => {
+export const fetchSingleBook = (bookId) => {
     return (dispatch) => {
         dispatch({ type: types.LOADING_SINGLE_BOOK });
 
-        return api.getBookById(itemId)
+        return api.getBookById(bookId)
             .then(resp => {
-                console.log("getItemById: resp");
+                console.log("getbookById: resp");
                 console.log(resp);
                 if (resp.data.success) {
-                    const { item } = resp.data;
+                    const { book } = resp.data;
                     dispatch({
                         type: types.GET_SINGLE_BOOK,
-                        item,
+                        book,
                     });
                 }
                 return resp;
             })
             .catch(err => {
-                console.error(`ERROR in 'fetchSingleItem': ${err}`);
+                console.error(`ERROR in 'fetchSinglebook': ${err}`);
                 console.error(err);
                 return err;
             });
     };
 };
 
-export const insertSingleBook = item => {
+export const insertSingleBook = book => {
     return (dispatch) => {
         dispatch({ type: types.LOADING_SINGLE_BOOK });
 
-        return api.insertItem(item)
+        return api.insertbook(book)
             .then(resp => {
-                console.log("insertItem: resp");
+                console.log("insertbook: resp");
                 console.log(resp);
                 if ((resp.data || {}).success) {
-                    const newItem = JSON.parse(resp.config.data);
+                    const newbook = JSON.parse(resp.config.data);
                     dispatch({
                         type: types.SET_SINGLE_BOOK,
-                        item: {
+                        book: {
                             _id: resp.data.id,
-                            ...newItem
+                            ...newbook
                         }
                     });
                 }
                 return resp;
             })
             .catch(err => {
-                console.error(`ERROR in 'insertSingleItem': ${err}`);
+                console.error(`ERROR in 'insertSinglebook': ${err}`);
                 console.error(err);
                 return err;
             });
     };
 };
 
-export const updateSingleBook = item => {
+export const updateSingleBook = book => {
     return (dispatch) => {
         dispatch({ type: types.LOADING_SINGLE_BOOK });
 
-        return api.updateItemById(item._id, item)
+        return api.updatebookById(book._id, book)
             .then(resp => {
-                console.log("updateItem: resp");
+                console.log("updatebook: resp");
                 console.log(resp);
                 if ((resp.data || {}).success) {
-                    const newItem = JSON.parse(resp.config.data);
+                    const newbook = JSON.parse(resp.config.data);
                     dispatch({
                         type: types.UPDATE_SINGLE_BOOK,
-                        item: {
+                        book: {
                             _id: resp.data.id,
-                            ...newItem
+                            ...newbook
                         }
                     });
                 }
                 return resp;
             })
             .catch(err => {
-                console.error(`ERROR in 'updateSingleItem': ${err}`);
+                console.error(`ERROR in 'updateSinglebook': ${err}`);
                 console.error(err);
                 return err;
             });
     };
 };
 
-export const deleteSingleItem = itemId => {
+export const deleteSinglebook = bookId => {
     return (dispatch) => {
         dispatch({ type: types.LOADING_SINGLE_BOOK });
 
-        return api.deleteItemById(itemId)
+        return api.deletebookById(bookId)
             .then(resp => {
-                console.log("deleteItemById: resp");
+                console.log("deletebookById: resp");
                 console.log(resp);
                 dispatch({
                     type: types.RELOAD_BOOKS
@@ -120,7 +121,7 @@ export const deleteSingleItem = itemId => {
                 return resp;
             })
             .catch(err => {
-                console.error(`ERROR in 'deleteSingleItem': ${err}`);
+                console.error(`ERROR in 'deleteSinglebook': ${err}`);
                 console.error(err);
                 return err;
             });

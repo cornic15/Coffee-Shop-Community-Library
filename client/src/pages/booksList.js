@@ -55,7 +55,7 @@ const Table = ({ columns, data }) => {
                     prepareRow(row)
                     return (
                         <TableRow
-                            data-row-item-id={row.values._id}
+                            data-row-book-id={row.values._id}
                             {...row.getRowProps()}
                         >
                             {row.cells.map(cell => {
@@ -73,34 +73,34 @@ const Table = ({ columns, data }) => {
     )
 };
 
-class ItemsTable extends Component {
+class booksTable extends Component {
 
     componentDidMount() {
-        console.log("ItemsList: props");
+        console.log("booksList: props");
         console.log(this.props);
-        // if (((this.props.itemData || {}).items || []).length) return;
+        // if (((this.props.bookData || {}).books || []).length) return;
 
         this.props.fetchAllBooks()
     }
 
-    handleRemoveItem = data => {
-        const itemId = data;
+    handleRemovebook = data => {
+        const bookId = data;
 
-        this.props.deleteSingleItem(itemId)
+        this.props.deleteSinglebook(bookId)
             .then(resp => {
-                console.log("handleRemoveItem: resp");
+                console.log("handleRemovebook: resp");
                 console.log(resp);
-                this.props.fetchAllItems();
+                this.props.fetchAllbooks();
             });
     }
 
     render() {
         const {
-            items,
+            books,
             loaded,
             loading
-        } = this.props.itemData || {};
-        console.log(items);
+        } = this.props.bookData || {};
+        console.log(books);
 
         const columns = [
             {
@@ -111,12 +111,26 @@ class ItemsTable extends Component {
                     console.log(props);
                     const { original } = props.cell.row;
                     return (
-                        <span data-item-id={original._id}>
+                        <span data-book-id={original._id}>
                             {props.value}
                         </span>
                     )
                 }
             },
+            {
+            Header: 'Title',
+            accessor: 'title',
+            // filterable: true,
+            Cell: props => {
+                const { original } = props.cell.row;
+                return (
+                    <span data-name={original.name}>
+                        {props.value}
+                    </span>
+                );
+            }
+        },
+            /*
             {
                 Header: 'Name',
                 accessor: 'name',
@@ -186,13 +200,14 @@ class ItemsTable extends Component {
                     return (
                         <Link
                             data-update-id={original._id}
-                            to={`/item/update/${props.value}`}
+                            to={`/book/update/${props.value}`}
                         >
-                            Update Item
+                            Update book
                         </Link>
                     );
                 },
             },
+            */
             {
                 Header: 'Delete',
                 accessor: '_delete',
@@ -202,7 +217,7 @@ class ItemsTable extends Component {
                         <span data-delete-id={original._id}>
                             <DeleteButton
                                 id={original._id}
-                                onDelete={this.handleRemoveItem}
+                                onDelete={this.handleRemovebook}
                             />
                         </span>
                     );
@@ -214,14 +229,14 @@ class ItemsTable extends Component {
             <Wrapper>
                 <CssBaseline />
                 {(
-                    (items || []).length > 0
+                    (books || []).length > 0
                 ) ? (
                     <Table
-                        data={items}
+                        data={books}
                         columns={columns}
                     />
                 ) : (
-                    `No items to render... :(`
+                    `No books to render... :(`
                 )}
             </Wrapper>
         );
@@ -237,4 +252,4 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemsTable);
+export default connect(mapStateToProps, mapDispatchToProps)(booksTable);

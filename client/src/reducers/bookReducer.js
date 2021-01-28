@@ -7,7 +7,7 @@ const initialState = {
     book: null
 }
 
-const itemReducer = (state = initialState, action) => {
+const bookReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.LOADING_SINGLE_BOOK:
         case types.LOADING_ALL_BOOKS:
@@ -21,47 +21,47 @@ const itemReducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 loaded: true,
-                items: action.books
+                books: action.books
             };
         case types.GET_SINGLE_BOOK:
             return {
                 ...state,
                 loading: false,
                 loaded: true,
-                item: action.book
+                book: action.book
             };
         case types.SET_SINGLE_BOOK:
             return {
                 ...state,
                 loading: false,
                 loaded: true,
-                items: [ ...state.book, action.book ],
-                item: action.book
+                books: [ ...state.book, action.book ],
+                book: action.book
             };
         case types.UPDATE_SINGLE_BOOK:
             console.log('initial:')
             console.log(state.books);
-            let newItems = state.items.map((book, i) => {
+            let newbooks = state.books.map((book, i) => {
                 if (book._id === action.book._id) {
                     book = action.book;
                 }
                 return book;
             });
             console.log('altered:')
-            console.log(newItems);
+            console.log(newbooks);
             return {
                 ...state,
                 loading: false,
                 loaded: true,
-                books: newItems,
+                books: newbooks,
                 book: action.book
             };
         // TODO: after users are created
-        // case types.FETCH_USER_ITEM:
-        //   return { ...state, item: action.item }
+        // case types.FETCH_USER_book:
+        //   return { ...state, book: action.book }
         default:
             return state;
     }
 }
 
-export default itemReducer;
+export default bookReducer;

@@ -5,7 +5,7 @@ export const AUTHENTICATION_FAILURE = "AUTHENTICATION_FAILURE";
 export const LOGOUT = "LOGOUT";
 
 
-// ITEMS
+// bookS
 export const GET_SINGLE_BOOK = "GET_SINGLE_BOOK";
 export const SET_SINGLE_BOOK = "SET_SINGLE_BOOK";
 export const UPDATE_SINGLE_BOOK = "UPDATE_SINGLE_BOOK";

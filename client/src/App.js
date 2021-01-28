@@ -21,10 +21,10 @@ import {
 
 // Pages
 import {
-    ItemInsert,
-    ItemsList,
-    ItemsTable,
-    ItemUpdate
+    BookInsert,
+    booksList,
+    booksTable,
+    bookUpdate
 } from './pages';
 
 class App extends Component {
@@ -33,10 +33,10 @@ class App extends Component {
         const publicViews = (
             <Switch>
                 <Route exact path={routes.HOME} component={Welcome} />
-                <Route exact path={routes.ITEMS} component={ItemsList} />
-                <Route exact path={`${routes.ITEMS}/react-table-v6`} component={ItemsTable} />
-                <Route exact path={routes.ITEM_INSERT} component={ItemInsert} />
-                <Route exact path={routes.ITEM_UPDATE} component={ItemUpdate} />
+                <Route exact path={routes.BOOKS} component={booksList} />
+                <Route exact path={`${routes.BOOKS}/react-table-v6`} component={booksTable} />
+                <Route exact path={routes.BOOK_INSERT} component={BookInsert} />
+                <Route exact path={routes.BOOK_UPDATE} component={bookUpdate} />
             </Switch>
         );
 

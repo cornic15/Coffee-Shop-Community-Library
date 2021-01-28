@@ -73,7 +73,7 @@ const CancelButton = styled.a.attrs({
   margin: 15px 15px 15px 5px;
 `;
 
-class ItemInsert extends Component {
+class BookInsert extends Component {
     constructor(props) {
         /**
          * Currently deprecated and now known as the "legacy context":
@@ -84,19 +84,20 @@ class ItemInsert extends Component {
          */
         super(props);
         this.state = {
-            name: '',
-            daysOfWeek: {},
-            timeframeNote: '',
-            priority: 0,
-            content: '',
+           // name: '',
+           // daysOfWeek: {},
+           // timeframeNote: '',
+           // priority: 0,
+           // content: '',
+        // Title: '',
         };
     }
 
     handleChangeInputName = async event => {
         const name = event.target.value;
-        this.setState({ name });
+        this.setState({ Title });
     }
-
+/*
     handleChangeDays = async event => {
         const { checked, value } = event.target;
         const { daysOfWeek } = this.state;
@@ -127,31 +128,34 @@ class ItemInsert extends Component {
         const content = event.target.value;
         this.setState({ content });
     }
-
-    handleInsertItem = event => {
+*/
+    handleInsertbook = event => {
         event.preventDefault();
 
         const {
-            name,
-            daysOfWeek,
-            timeframeNote,
-            priority,
-            content
+           // name,
+           // daysOfWeek,
+           // timeframeNote,
+            //priority,
+           // content
+           Title
         } = this.state;
-        const item = { name, daysOfWeek, timeframeNote, priority, content };
+       // const book = { name, daysOfWeek, timeframeNote, priority, content };
+       const book = {Title};
 
-        this.props.insertSingleBook(item)
+        this.props.insertSingleBook(book)
             .then(resp => {
-                console.log("handleInsertItem: resp");
+                console.log("handleInsertbook: resp");
                 console.log(resp);
                 if (typeof resp === "object" && (resp.status < 300 && resp.status >= 200)) {
-                    window.alert('Item inserted successfully');
+                    window.alert('book inserted successfully');
                     this.setState({
-                        name: '',
-                        daysOfWeek: {},
-                        timeframeNote: '',
-                        priority: 0,
-                        content: '',
+                     //   name: '',
+                      //  daysOfWeek: {},
+                       // timeframeNote: '',
+                      //  priority: 0,
+                       // content: '',
+                         Title: '',
                     });
                 } else {
                     throw resp;
@@ -159,34 +163,36 @@ class ItemInsert extends Component {
             })
             .catch(err => {
                 // TODO: pass error object correctly so that things like validation errors can be displayed to user
-                window.alert(`There was an error creating the item... :(`);
-                console.log("handleInsertItem: err");
+                window.alert(`There was an error creating the book... :(`);
+                console.log("handleInsertbook: err");
                 console.log(err);
             })
     }
 
     render() {
         const {
-            name,
-            daysOfWeek,
-            timeframeNote,
-            priority,
-            content
+           // name,
+           // daysOfWeek,
+           // timeframeNote,
+           // priority,
+            //content
+           // Title
         } = this.state;
 
-        const { DAYS_OF_WEEK } = shared;
+      //  const { DAYS_OF_WEEK } = shared;
 
         return (
             <Wrapper>
-                <Title>Create Item</Title>
+               <Title>Create book</Title> 
 
                 <Label>Name: </Label>
                 <InputText
                     type="text"
-                    value={name}
+                   // value={name}
+                     value={Title}
                     onChange={this.handleChangeInputName}
                 />
-
+{/*
                 <Fieldset>
                     <legend>Day(s) of the Week: </legend>
                     {Object.keys(DAYS_OF_WEEK).map((day, i) => (
@@ -208,14 +214,13 @@ class ItemInsert extends Component {
                         </React.Fragment>
                     ))}
                 </Fieldset>
-
+                   
                 <Label>Timeframe Note: </Label>
                 <InputText
                     type="text"
                     value={timeframeNote}
                     onChange={this.handleChangeInputTimeframe}
                 />
-
                 <Label>Priority: </Label>
                 <InputText
                     type="number"
@@ -234,9 +239,9 @@ class ItemInsert extends Component {
                     value={content}
                     onChange={this.handleChangeInputContent}
                 />
-
-                <Button onClick={this.handleInsertItem}>Add Item</Button>
-                <CancelButton href={'/items/list'}>Cancel</CancelButton>
+ */}
+                <Button onClick={this.handleInsertbook}>Add book</Button>
+                <CancelButton href={'/books/list'}>Cancel</CancelButton>
             </Wrapper>
         );
     }
@@ -244,4 +249,4 @@ class ItemInsert extends Component {
 
 const mapDispatchToProps = dispatch => bindActionCreators({ insertSingleBook }, dispatch);
 
-export default connect(null, mapDispatchToProps)(ItemInsert);
+export default connect(null, mapDispatchToProps)(BookInsert);

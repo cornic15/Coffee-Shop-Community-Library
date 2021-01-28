@@ -14,34 +14,34 @@ const Wrapper = styled.div`
     padding: 0 40px 40px 40px;
 `;
 
-class ItemsList extends Component {
+class booksList extends Component {
 
     componentDidMount() {
-        console.log("ItemsList: props");
+        console.log("booksList: props");
         console.log(this.props);
-        // if (((this.props.itemData || {}).items || []).length) return;
+        // if (((this.props.bookData || {}).books || []).length) return;
 
-        this.props.fetchAllItems()
+        this.props.fetchAllbooks()
     }
 
-    handleRemoveItem = data => {
-        const itemId = data;
+    handleRemovebook = data => {
+        const bookId = data;
 
-        this.props.deleteSingleItem(itemId)
+        this.props.deleteSinglebook(bookId)
             .then(resp => {
-                console.log("handleRemoveItem: resp");
+                console.log("handleRemovebook: resp");
                 console.log(resp);
-                this.props.fetchAllItems();
+                this.props.fetchAllbooks();
             });
     }
 
     render() {
         const {
-            items,
+            books,
             loaded,
             loading
-        } = this.props.itemData || {};
-        console.log(items);
+        } = this.props.bookData || {};
+        console.log(books);
 
         const columns = [
             {
@@ -50,12 +50,25 @@ class ItemsList extends Component {
                 filterable: true,
                 Cell: props => {
                     return (
-                        <span data-item-id={props.original._id}>
+                        <span data-book-id={props.original._id}>
                             {props.original._id}
                         </span>
                     )
                 }
             },
+            {
+                Header: 'Title',
+                accessor: 'title',
+                filterable: true,
+                Cell: props => {
+                    return (
+                        <span data-name={props.original.title}>
+                            {props.value}
+                        </span>
+                    );
+                }
+            },
+            /*
             {
                 Header: 'Name',
                 accessor: 'name',
@@ -114,6 +127,7 @@ class ItemsList extends Component {
                     );
                 },
             },
+            */
             {
                 Header: '',
                 accessor: '',
@@ -121,9 +135,9 @@ class ItemsList extends Component {
                     return (
                         <Link
                             data-update-id={props.original._id}
-                            to={`/item/update/${props.original._id}`}
+                            to={`/book/update/${props.original._id}`}
                         >
-                            Update Item
+                            Update book
                         </Link>
                     );
                 },
@@ -136,7 +150,7 @@ class ItemsList extends Component {
                         <span data-delete-id={props.original._id}>
                             <DeleteButton
                                 id={props.original._id}
-                                onDelete={this.handleRemoveItem}
+                                onDelete={this.handleRemovebook}
                             />
                         </span>
                     );
@@ -147,10 +161,10 @@ class ItemsList extends Component {
         return (
             <Wrapper>
                 {(
-                    (items || []).length > 0 // defeats the purpose of using `isLoading` prop?
+                    (books || []).length > 0 // defeats the purpose of using `isLoading` prop?
                 ) ? (
                         <ReactTable
-                            data={items}
+                            data={books}
                             columns={columns}
                             isLoading={(loaded && loading)}
                             defaultPageSize={10}
@@ -158,7 +172,7 @@ class ItemsList extends Component {
                             minRows={10}
                         />
                     ) : (
-                        `No items to render... :(`
+                        `No books to render... :(`
                     )}
             </Wrapper>
         );
@@ -174,4 +188,4 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemsList);
+export default connect(mapStateToProps, mapDispatchToProps)(booksList);

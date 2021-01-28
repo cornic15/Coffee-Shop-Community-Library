@@ -66,9 +66,9 @@ $ brew services start mongodb
 Create and name database:
 ```
 $ mongo
-> use items
+> use books
 ```
-_(In this case, `items` is the name of the database that we will be creating and using for this app.)_
+_(In this case, `books` is the name of the database that we will be creating and using for this app.)_
 
 ## Starting the Node Server
 In new tab/window:

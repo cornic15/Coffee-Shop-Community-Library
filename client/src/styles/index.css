@@ -28,7 +28,7 @@ a {
 }
 
 a:hover,
-.delete-item-btn:hover {
+.delete-book-btn:hover {
     opacity: 0.7;
     text-decoration: none;
 }

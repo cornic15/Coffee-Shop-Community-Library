@@ -6,20 +6,20 @@ const LOG_IN = '/login';
 
 // Post routes
 /*
-const ITEMS = '/items';
-const ITEM = '/item/:id';
-const ITEM_INSERT = '/item/create';
-const ITEM_UPDATE = '/item/update/:id';
+const bookS = '/books';
+const book = '/book/:id';
+const book_INSERT = '/book/create';
+const book_UPDATE = '/book/update/:id';
 
 export const routes = {
     HOME,
     ABOUT,
     SIGN_UP,
     LOG_IN,
-    ITEMS,
-    ITEM,
-    ITEM_INSERT,
-    ITEM_UPDATE,
+    bookS,
+    book,
+    book_INSERT,
+    book_UPDATE,
 };
 
 */
