@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { useTable } from 'react-table';
 import * as actions from '../actions';
 import { DeleteButton } from '../components/buttons';
+import ReactTable from 'react-table-6';
 
 import MaUTable from '@material-ui/core/Table'
 import {
@@ -90,7 +91,7 @@ class booksTable extends Component {
             .then(resp => {
                 console.log("handleRemovebook: resp");
                 console.log(resp);
-                this.props.fetchAllbooks();
+                this.props.fetchAllBooks();
             });
     }
 
@@ -103,6 +104,7 @@ class booksTable extends Component {
         console.log(books);
 
         const columns = [
+            /*
             {
                 Header: 'ID',
                 accessor: '_id',
@@ -117,6 +119,23 @@ class booksTable extends Component {
                     )
                 }
             },
+            */
+           {
+            Header: 'Image',
+            accessor: 'image_url_s',
+            // filterable: true,
+            Cell: props => {
+                const { original } = props.cell.row;
+                return (
+                 
+                    <span data-name={original.name}>
+                        <img src ={props.value} />
+                    </span>
+                   
+                );
+            }
+        },
+        
             {
             Header: 'Title',
             accessor: 'title',
@@ -130,6 +149,77 @@ class booksTable extends Component {
                 );
             }
         },
+        {
+            Header: 'Author',
+            accessor: 'author',
+            // filterable: true,
+            Cell: props => {
+                const { original } = props.cell.row;
+                return (
+                    <span data-name={original.name}>
+                        {props.value}
+                    </span>
+                );
+            }
+        },
+        {
+            Header: 'Year',
+            accessor: 'publication_year',
+            // filterable: true,
+            Cell: props => {
+                const { original } = props.cell.row;
+                return (
+                    <span data-name={original.publication_year}>
+                        {props.value}
+                    </span>
+                );
+            }
+        },
+
+        {
+            Header: 'isbn',
+            accessor: 'isbn',
+            // filterable: true,
+            Cell: props => {
+                const { original } = props.cell.row;
+                return (
+                    <span data-name={original.isbn}>
+                        {props.value}
+                    </span>
+                );
+            }
+        },
+
+        
+        {
+            Header: 'Available',
+            accessor: 'available',
+            // filterable: true,
+            Cell: props => {
+                const { original } = props.cell.row;
+                return (
+                    <span data-name={original.available}>
+                        {props.value}
+                    </span>
+                );
+            }
+        },
+/*
+        {
+            Header: 'test',
+            accessor: 'test',
+            // filterable: true,
+            Cell: props => {
+                const { original } = props.cell.row;
+                return (
+                    <button data-name={original.available} disabled = {original.available == 0}>
+                        {props.value}
+                    </button>
+                );
+            }
+        },
+        */
+           
             /*
             {
                 Header: 'Name',
@@ -192,6 +282,7 @@ class booksTable extends Component {
                     );
                 },
             },
+            
             {
                 Header: 'Update',
                 accessor: '_update',
@@ -207,7 +298,137 @@ class booksTable extends Component {
                     );
                 },
             },
-            */
+            
+           {
+            Header: 'info',
+            accessor: '_info',
+            Cell: props => {
+                return (
+                    <Link
+                        data-update-id={props.original._id}
+                        to={`/book/info/${props.original._id}`}
+                    >
+                        info
+                    </Link>
+                );
+            },
+        },
+        */
+        {
+            Header: 'Check In',
+            accessor: '_checkin',
+            Cell: props => {
+                const { original } = props.cell.row;
+                return (
+                  
+                    <Link to="/bookInfo" className="btn btn-primary" disabled={5===5} >Check In</Link> ); }, }, // ned to change for check in 
+                       
+                    
+                    
+            
+
+                    {
+                        Header: 'Check Out',
+                        accessor: 'checkOut',
+                        // filterable: true,
+                        Cell: props => {
+                            const { original } = props.cell.row;
+                            return (
+                                <button  disabled = {original.available == 0}>
+                                   Check Out
+                                </button>
+                            );
+                        }
+                    },
+      
+
+        {
+            Header: 'Info',
+            accessor: '_info',
+            Cell: props => {
+                const { original } = props.cell.row;
+                return (
+                    <Link
+                   
+                        data-update-id={original._id}
+                        to={`/book/info/${props.value}`} // need to change for check out
+                    >
+                        Info
+                    </Link>
+                );
+            },
+        },
+/*
+        {
+            Header: '',
+            accessor: '',
+            Cell: props => {
+                return (
+                    <Link
+                        data-info-id={props.original._id}
+                        to={`/book/info/${props.original._id}`}
+                    >
+                        Update book
+                    </Link>
+                );
+            },
+        },
+        */
+/*
+
+        {
+            Header: 'Book Info',
+            accessor: '_bookinfo',
+            Cell: props => {
+                const { original } = props.cell.row;
+                return (
+                    <Link
+                   
+                        data-update-id={original._id}
+                        to={`/book/info/${props.value}`} // need to change for check in 
+                    >
+                        Info
+                    </Link>
+                );
+            },
+        },
+
+
+*/
+
+                   // <Link to="/bookInfo" className="btn btn-primary">Sign up</Link> ); }, },
+/*
+                    <Link
+                    data-update-id={original._id}
+                    to={`/book/update/${props.value}`} // need to change for more info 
+                >
+                    More Info
+                </Link> ); }, },
+*/
+
+                   // <Link
+                        
+                      //  <Link to="/bookUpdate.js" >More Info
+                      
+                      //  </Link>
+                      /*
+
+<Link
+data-update-id={original._id}
+to={`/book/${props.value}`} // need to create/change to checkout
+>
+test
+
+<Link>
+                        to={`/book/info/${props.value}`} 
+               
+                      Checkout
+                    </Link>
+                );
+            },
+        },
+        */
+        /*
             {
                 Header: 'Delete',
                 accessor: '_delete',
@@ -223,6 +444,7 @@ class booksTable extends Component {
                     );
                 },
             },
+            */
         ];
 
         return (
@@ -243,6 +465,30 @@ class booksTable extends Component {
     }
 
 }
+
+/*
+return (
+    <Wrapper>
+        {(
+            (books || []).length > 0 // defeats the purpose of using `isLoading` prop?
+        ) ? (
+                <ReactTable
+                    data={books}
+                    columns={columns}
+                    isLoading={(loaded && loading)}
+                    defaultPageSize={10}
+                    showPageSizeOptions={true}
+                    minRows={10}
+                />
+            ) : (
+                `No books to render... :(`
+            )}
+    </Wrapper>
+);
+}
+
+}
+*/
 
 const mapStateToProps = state => {
     return {

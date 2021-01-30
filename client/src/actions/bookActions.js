@@ -32,7 +32,7 @@ export const fetchSingleBook = (bookId) => {
 
         return api.getBookById(bookId)
             .then(resp => {
-                console.log("getbookById: resp");
+                console.log("getBookById: resp");
                 console.log(resp);
                 if (resp.data.success) {
                     const { book } = resp.data;
@@ -55,7 +55,7 @@ export const insertSingleBook = book => {
     return (dispatch) => {
         dispatch({ type: types.LOADING_SINGLE_BOOK });
 
-        return api.insertbook(book)
+        return api.insertBook(book)
             .then(resp => {
                 console.log("insertbook: resp");
                 console.log(resp);
@@ -72,7 +72,7 @@ export const insertSingleBook = book => {
                 return resp;
             })
             .catch(err => {
-                console.error(`ERROR in 'insertSinglebook': ${err}`);
+                console.error(`ERROR in 'insertSingleBook': ${err}`);
                 console.error(err);
                 return err;
             });
@@ -83,7 +83,7 @@ export const updateSingleBook = book => {
     return (dispatch) => {
         dispatch({ type: types.LOADING_SINGLE_BOOK });
 
-        return api.updatebookById(book._id, book)
+        return api.updateBookById(book._id, book)
             .then(resp => {
                 console.log("updatebook: resp");
                 console.log(resp);
@@ -111,9 +111,9 @@ export const deleteSinglebook = bookId => {
     return (dispatch) => {
         dispatch({ type: types.LOADING_SINGLE_BOOK });
 
-        return api.deletebookById(bookId)
+        return api.deleteBookById(bookId)
             .then(resp => {
-                console.log("deletebookById: resp");
+                console.log("deleteBookById: resp");
                 console.log(resp);
                 dispatch({
                     type: types.RELOAD_BOOKS

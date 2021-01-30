@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { insertSingleBook } from '../actions';
-import { shared } from '../constants';
+// import { shared } from '../constants';
 
 import styled from 'styled-components';
 
@@ -90,12 +90,19 @@ class BookInsert extends Component {
            // priority: 0,
            // content: '',
         // Title: '',
+        copies: '',
         };
     }
 
     handleChangeInputName = async event => {
         const name = event.target.value;
         this.setState({ Title });
+    }
+
+    handleChangeInputCopies = async event => {
+        const copies = event.target.value;
+        this.setState({ copies });
+     
     }
 /*
     handleChangeDays = async event => {
@@ -129,7 +136,7 @@ class BookInsert extends Component {
         this.setState({ content });
     }
 */
-    handleInsertbook = event => {
+    handleInsertBook = event => {
         event.preventDefault();
 
         const {
@@ -138,10 +145,11 @@ class BookInsert extends Component {
            // timeframeNote,
             //priority,
            // content
-           Title
+          // Title
+          copies
         } = this.state;
        // const book = { name, daysOfWeek, timeframeNote, priority, content };
-       const book = {Title};
+       const book = {copies};
 
         this.props.insertSingleBook(book)
             .then(resp => {
@@ -155,7 +163,8 @@ class BookInsert extends Component {
                        // timeframeNote: '',
                       //  priority: 0,
                        // content: '',
-                         Title: '',
+                         //Title: '',
+                         copies: 0,
                     });
                 } else {
                     throw resp;
@@ -177,10 +186,11 @@ class BookInsert extends Component {
            // priority,
             //content
            // Title
+           copies
         } = this.state;
 
       //  const { DAYS_OF_WEEK } = shared;
-
+/*
         return (
             <Wrapper>
                <Title>Create book</Title> 
@@ -192,6 +202,22 @@ class BookInsert extends Component {
                      value={Title}
                     onChange={this.handleChangeInputName}
                 />
+                */
+
+
+               return (
+                <Wrapper>
+                   <Title>Create book</Title> 
+    
+                    <Label>Name: </Label>
+                    <InputText
+                        type="text"
+                       // value={name}
+                         value={copies}
+                        onChange={this.handleChangeInputCopies}
+                    />
+
+
 {/*
                 <Fieldset>
                     <legend>Day(s) of the Week: </legend>
@@ -240,7 +266,7 @@ class BookInsert extends Component {
                     onChange={this.handleChangeInputContent}
                 />
  */}
-                <Button onClick={this.handleInsertbook}>Add book</Button>
+                <Button onClick={this.handleInsertBook}>Add book</Button>
                 <CancelButton href={'/books/list'}>Cancel</CancelButton>
             </Wrapper>
         );

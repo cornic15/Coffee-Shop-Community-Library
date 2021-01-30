@@ -21,7 +21,7 @@ class booksList extends Component {
         console.log(this.props);
         // if (((this.props.bookData || {}).books || []).length) return;
 
-        this.props.fetchAllbooks()
+        this.props.fetchAllBooks()
     }
 
     handleRemovebook = data => {
@@ -31,7 +31,7 @@ class booksList extends Component {
             .then(resp => {
                 console.log("handleRemovebook: resp");
                 console.log(resp);
-                this.props.fetchAllbooks();
+                this.props.fetchAllBooks();
             });
     }
 
@@ -68,7 +68,32 @@ class booksList extends Component {
                     );
                 }
             },
-            /*
+            {
+            Header: 'Author',
+            accessor: 'author',
+            filterable: true,
+            Cell: props => {
+                return (
+                    <span data-name={props.original.author}>
+                        {props.value}
+                    </span>
+                );
+            }
+        },
+        /*
+{
+        Header: 'publication_year',
+        accessor: 'publication_yearr',
+        filterable: true,
+        Cell: props => {
+            return (
+                <span data-name={props.original.publication_year}>
+                    {props.value}
+                </span>
+            );
+        }
+    },
+         
             {
                 Header: 'Name',
                 accessor: 'name',

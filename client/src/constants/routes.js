@@ -28,6 +28,7 @@ const BOOKS = '/books';
 const BOOK = '/book/:id';
 const BOOK_INSERT = '/book/create';
 const BOOK_UPDATE = '/book/update/:id';
+const BOOK_INFO = '/book/info/:id';
 
 export const routes = {
     HOME,
@@ -38,5 +39,6 @@ export const routes = {
     BOOK,
     BOOK_INSERT,
     BOOK_UPDATE,
+    BOOK_INFO,
 };
 

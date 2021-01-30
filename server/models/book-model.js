@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const Book = new Schema(
     {
         isbn: {
-            type: Number,
+            type: String,
             required: true
         },
         title: {
@@ -17,7 +17,7 @@ const Book = new Schema(
             required: false
         },
         publication_year: {
-            type: Number,
+            type: String,
             required: false
         },
         publisher: {

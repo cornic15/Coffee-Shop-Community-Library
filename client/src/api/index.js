@@ -29,7 +29,7 @@ const apis = {
 
 export const getAllBooks = payload => api.get(`/books`, payload);
 export const getBookById = id => api.get(`/book/${id}`);
-export const insertBook = payload => api.post(`/books`, payload);
+export const insertBook = payload => api.post(`/book`, payload);
 export const updateBookById = (id, payload) => api.put(`/book/${id}`, payload);
 export const deleteBookById = id => api.delete(`/book/${id}`);
 

@@ -40,7 +40,7 @@ getbooks = async (req, res) => {
     });
 };
 
-getbookById = async (req, res) => {
+getBookById = async (req, res) => {
     await book.find({ _id: req.params.id }, (err, books) => {
         if (err) {
             console.error(`[Hack.Diversity React Template] - 400 in 'getbookById': ${err}`);
@@ -234,7 +234,7 @@ deletebook = async (req, res) => {
 
 module.exports = {
     getbooks,
-    getbookById,
+    getBookById,
     createbook,
     updatebook,
     deletebook,

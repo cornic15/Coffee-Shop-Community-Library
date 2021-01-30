@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -67,7 +66,7 @@ class BookUpdate extends Component {
          *
          * TODO: refactor to use new Context API:
          * - https://reactjs.org/docs/context.html
-         **/
+         */
         super(props);
         this.state = {
             _id: '',
@@ -91,7 +90,6 @@ class BookUpdate extends Component {
         this.setState({ Title });
     }
 */
-
     handleChangeInputCopies = async event => {
         console.log("Hello");
         const copies = event.target.value;
@@ -178,8 +176,3 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => bindActionCreators({ fetchSingleBook, updateSingleBook }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookUpdate);
-
-
-
-
-
