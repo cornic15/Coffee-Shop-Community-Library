@@ -351,7 +351,7 @@ class booksTable extends Component {
                     <Link
                    
                         data-update-id={original._id}
-                        to={`/book/info/${props.value}`} // need to change for check out
+                        to={`/book/info/${original._id}`} // need to change for check out
                     >
                         Info
                     </Link>

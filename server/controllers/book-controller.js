@@ -2,6 +2,7 @@
 const book = require('../models/book-model');
 
 getbooks = async (req, res) => {
+    console.log ("getbooks");
     await book.find({}, (err, books) => {
         if (err) {
             console.error(`[Hack.Diversity React Template] - 400 in 'getbooks': ${err}`);
@@ -134,6 +135,7 @@ createbook = (req, res) => {
 };
 
 updatebook = (req, res) => {
+    console.log ("updatebook");
     const body = req.body;
     // console.log('----------------------- updatebook: req -----------------------');
     // console.log(req);
@@ -148,7 +150,7 @@ updatebook = (req, res) => {
                 error: 'You must provide an book to update.',
             });
     }
-
+/*
     const bookForUpdate = {
         _id: req.params.id,
         name: body.name,
@@ -157,7 +159,13 @@ updatebook = (req, res) => {
         priority: body.priority,
         content: body.content,
     };
-
+*/
+    const bookForUpdate = {
+        _id: req.params.id,
+        copies: req.body.copies
+    };
+console.log ("update books: ");
+console.log(bookForUpdate);
     // console.log('----------------------- updatebook: res -----------------------');
     // console.log(res);
 
@@ -170,7 +178,7 @@ updatebook = (req, res) => {
                 .json({
                     success: false,
                     error: err,
-                    message: 'book not found!',
+                    message: 'book not found!'+bookForUpdate,
                 });
         }
         // TODO: make this neater
@@ -178,17 +186,16 @@ updatebook = (req, res) => {
         // console.log(book);
         return writeOpRes;
     })
-    .then(res => {
+    .then(resp => {
         // console.log('----------------------- updatebook - findOne: res -----------------------');
         // console.log(res);
         console.log(`[Hack.Diversity React Template] - 200 in 'updatebook': book updated!`);
-        return res
-            .status(200)
+        res.status(200)
             .json({
                 success: true,
                 id: req.params.id,
                 message: 'book updated!',
-                writeOpResult: res
+                writeOpResult: resp
             });
     }).catch(err => {
         console.error(`[Hack.Diversity React Template] - caught error in 'updatebook': ${err}`);

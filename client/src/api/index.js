@@ -4,6 +4,8 @@ import axios from 'axios';
 const api = axios.create({
     baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3000/api',
     hostname: process.env.REEACT_APP_API_HOST || 'http://localhost:3000/',
+   // baseURL:  'http://localhost:8000/api',
+    //hostname: 'http://localhost:8000/',
     httpsAgent: https.Agent({
         rejectUnauthorized: false,
     }),

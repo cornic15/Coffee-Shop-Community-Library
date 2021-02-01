@@ -150,6 +150,7 @@ class BookInsert extends Component {
         } = this.state;
        // const book = { name, daysOfWeek, timeframeNote, priority, content };
        const book = {copies};
+     console.log({book})
 
         this.props.insertSingleBook(book)
             .then(resp => {

@@ -5,12 +5,12 @@ const Book = new Schema(
     {
         isbn: {
             type: String,
-            required: true
+            required: false
         },
         title: {
             type: String,
     
-            required: true
+            required: false
         },
         author: {
             type: String,
@@ -22,7 +22,7 @@ const Book = new Schema(
         },
         publisher: {
             type: String,
-            required: true
+            required: false
         },
         image_url_s: {
             type: String,

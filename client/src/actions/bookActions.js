@@ -80,6 +80,7 @@ export const insertSingleBook = book => {
 };
 
 export const updateSingleBook = book => {
+    alert("updateSingleBook: "+book._id);
     return (dispatch) => {
         dispatch({ type: types.LOADING_SINGLE_BOOK });
 

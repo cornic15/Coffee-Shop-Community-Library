@@ -99,20 +99,24 @@ class BookUpdate extends Component {
     }
 
 
+    confirmUpdatebook1 = () =>{
+        alert("confirmUpdatebook");
+    }
 
 
-
-    handleUpdatebook = event => {
+    confirmUpdatebook = () => {
+        
         const {
             _id,
            // title,
             copies,
          
         } = this.state;
-        const book = { _id, copies };
-
+        const book = {_id: _id,copies: copies };
+        //alert("handleUpdatebook: "+book.copies);
         return this.props.updateSingleBook(book)
             .then(resp => {
+               // alert("handleUpdatebook: resp")
                 console.log("handleUpdatebook: resp");
                 console.log(resp);
                 if (typeof resp === "object" && (resp.status < 300 && resp.status >= 200)) {
