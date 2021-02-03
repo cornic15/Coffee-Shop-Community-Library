@@ -89,7 +89,7 @@ class BookUpdate extends Component {
         const name = event.target.value;
         this.setState({ Title });
     }
-*/
+
     handleChangeInputCopies = async event => {
         console.log("Hello");
         const copies = event.target.value;
@@ -127,23 +127,27 @@ class BookUpdate extends Component {
             });
     }
 
-
+*/
     render() {
         const {
             _id,
             title,
             copies,
+            author,
             
         } = this.state;
 
  
         return _id && (
             <Wrapper>
-                <Title>Update Boook</Title>
+                <Title>More Info</Title>
 
               
                 <h3>Title:</h3>
                 <p>{title}</p>
+
+                <h3>Author:</h3>
+                <p>{author}</p>
                 <Label>Update Number of Copies: </Label>
 
                 <InputText
