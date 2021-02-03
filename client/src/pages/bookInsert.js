@@ -90,7 +90,29 @@ class BookInsert extends Component {
            // priority: 0,
            // content: '',
         // Title: '',
-        copies: '',
+        //copies: '',
+        isbn:0,
+    
+        title: '',
+          
+        author: '',
+    
+        publication_year: '',
+         
+        publisher: '',
+         
+        image_url_s: '',
+         
+        image_url_m: '',
+         
+        image_url_l: '',
+        
+        copies: 0,
+         
+        available: 0
+         
+
+
         };
     }
 
@@ -99,11 +121,73 @@ class BookInsert extends Component {
         this.setState({ Title });
     }
 
+
+    handleChangeInputIsbn = async event => {
+        const isbn = event.target.value;
+        this.setState({ isbn });
+     
+    }
+    handleChangeInputTitle = async event => {
+        const title = event.target.value;
+        this.setState({ title });
+     
+    }
+
+    handleChangeInputAuthor = async event => {
+        const author = event.target.value;
+        this.setState({ author});
+     
+    }
+
+    handleChangeInputPubYear = async event => {
+        const publication_year = event.target.value;
+        this.setState({ publication_year });
+     
+    }
+
+    handleChangeInputPublisher = async event => {
+        const publisher = event.target.value;
+        this.setState({ publisher });
+     
+    }
+
+
+
+  
+
+    handleChangeInputImgS = async event => {
+        const image_url_s = event.target.value;
+        this.setState({ image_url_s });
+     
+    }
+
+  
+
+    handleChangeInputImgM = async event => {
+        const image_url_m = event.target.value;
+        this.setState({ image_url_m });
+     
+    }
+
+    handleChangeInputImgL = async event => {
+        const image_url_l= event.target.value;
+        this.setState({ image_url_l });
+     
+    }
+
     handleChangeInputCopies = async event => {
         const copies = event.target.value;
         this.setState({ copies });
      
     }
+
+    handleChangeInputAvailable = async event => {
+        const available = event.target.value;
+        this.setState({ available });
+     
+    }
+
+  
 /*
     handleChangeDays = async event => {
         const { checked, value } = event.target;
@@ -146,7 +230,27 @@ class BookInsert extends Component {
             //priority,
            // content
           // Title
-          copies
+         // copies
+
+         isbn,
+    
+         title,
+           
+         author,
+     
+         publication_year,
+          
+         publisher,
+          
+         image_url_s,
+          
+         image_url_m,
+          
+         image_url_l,
+         
+         copies,
+          
+         available
         } = this.state;
        // const book = { name, daysOfWeek, timeframeNote, priority, content };
        const book = {copies};
@@ -165,7 +269,28 @@ class BookInsert extends Component {
                       //  priority: 0,
                        // content: '',
                          //Title: '',
-                         copies: 0,
+                        // copies: 0,
+
+                        isbn:0,
+    
+                        title: '',
+                          
+                        author: '',
+                    
+                        publication_year: '',
+                         
+                        publisher: '',
+                         
+                        image_url_s: '',
+                         
+                        image_url_m: '',
+                         
+                        image_url_l: '',
+                        
+                        copies: 0,
+                         
+                        available: 0
+                         
                     });
                 } else {
                     throw resp;
@@ -187,7 +312,18 @@ class BookInsert extends Component {
            // priority,
             //content
            // Title
-           copies
+           //copies
+           isbn,
+           title,
+            author,
+       publication_year,
+            publisher,
+            image_url_s,
+             image_url_m,
+            image_url_l,
+           copies,
+            available
+            
         } = this.state;
 
       //  const { DAYS_OF_WEEK } = shared;
@@ -208,15 +344,109 @@ class BookInsert extends Component {
 
                return (
                 <Wrapper>
-                   <Title>Create book</Title> 
+                   <Title>Create a Book</Title> 
     
-                    <Label>Name: </Label>
+                    <Label>ISBN: </Label>
+                    <InputText
+                        type="text"
+                       // value={name}
+                         value={isbn}
+                        onChange={this.handleChangeInputIsbn}
+
+                        
+                    />
+
+<Label>Title: </Label>
+                    <InputText
+                        type="text"
+                       // value={name}
+                         value={title}
+                        onChange={this.handleChangeInputTitle}
+
+                        
+                    />
+
+<Label>Author: </Label>
+                    <InputText
+                        type="text"
+                       // value={name}
+                         value={author}
+                        onChange={this.handleChangeInputAuthor}
+
+                        
+                    />
+
+<Label>Publication Year: </Label>
+                    <InputText
+                        type="text"
+                       // value={name}
+                         value={publication_year}
+                        onChange={this.handleChangeInputPubYear}
+
+                        
+                    />
+
+<Label>Publisher: </Label>
+                    <InputText
+                        type="text"
+                       // value={name}
+                         value={publisher}
+                        onChange={this.handleChangeInputPublisher}
+
+                        
+                    />
+                    <Label>Small Image URL: </Label>
+                    <InputText
+                        type="text"
+                       // value={name}
+                         value={image_url_s}
+                        onChange={this.handleChangeInputImgS}
+
+                        
+                    />
+
+<Label>Medium Image URL </Label>
+                    <InputText
+                        type="text"
+                       // value={name}
+                         value={image_url_m}
+                        onChange={this.handleChangeInputImgM}
+
+                        
+                    />
+
+<Label>Large Image URL </Label>
+                    <InputText
+                        type="text"
+                       // value={name}
+                         value={image_url_l}
+                        onChange={this.handleChangeInputImgL}
+
+                        
+                    />
+
+<Label>Copies </Label>
                     <InputText
                         type="text"
                        // value={name}
                          value={copies}
                         onChange={this.handleChangeInputCopies}
+
+                        
                     />
+
+<Label>Available </Label>
+                    <InputText
+                        type="text"
+                       // value={name}
+                         value={available}
+                        onChange={this.handleChangeInputAvailable}
+
+                        
+                    />
+
+
+
 
 
 {/*
