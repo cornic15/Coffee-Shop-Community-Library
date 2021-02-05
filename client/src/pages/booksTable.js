@@ -126,6 +126,8 @@ class booksList extends Component {
 
         return (
             <Wrapper>
+  <Link to="/book/Create" className="btn btn-primary"> Create New Book </Link> 
+             
                 {(
                     (books || []).length > 0 // defeats the purpose of using `isLoading` prop?
                 ) ? (
