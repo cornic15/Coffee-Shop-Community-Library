@@ -45,13 +45,13 @@ class booksList extends Component {
 
         const columns = [
             {
-                Header: 'ID',
-                accessor: '_id',
+                Header: 'ISBN',
+                accessor: 'isbn',
                 filterable: true,
                 Cell: props => {
                     return (
-                        <span data-book-id={props.original._id}>
-                            {props.original._id}
+                        <span data-book-id={props.original.isbn}>
+                            {props.original.isbn}
                         </span>
                     )
                 }
@@ -80,79 +80,20 @@ class booksList extends Component {
                 );
             }
         },
-        /*
-{
-        Header: 'publication_year',
-        accessor: 'publication_yearr',
-        filterable: true,
-        Cell: props => {
-            return (
-                <span data-name={props.original.publication_year}>
-                    {props.value}
-                </span>
-            );
-        }
-    },
-         
-            {
-                Header: 'Name',
-                accessor: 'name',
-                filterable: true,
-                Cell: props => {
-                    return (
-                        <span data-name={props.original.name}>
-                            {props.value}
-                        </span>
-                    );
-                }
-            },
-            {
-                Header: 'Day(s)',
-                accessor: 'daysOfWeek',
-                filterable: true,
-                Cell: props => {
-                    const { daysOfWeek } = props.original;
-                    let daysToDisplay = "";
-                    if (daysOfWeek && typeof daysOfWeek === "object") {
-                        for (const day in daysOfWeek) {
-                            daysToDisplay = daysToDisplay === "" ? daysOfWeek[day] : `${daysToDisplay}, ${daysOfWeek[day]}`;
-                        }
 
-                    }
-                    return (
-                        <span
-                            data-daysofweek={daysOfWeek && JSON.stringify(daysOfWeek)}
-                            data-daysofweek-by-id={props.original._id}
-                        >
-                            {daysToDisplay || "-"}
-                        </span>
-                    );
-                }
-            },
-            {
-                Header: 'Timeframe',
-                accessor: 'timeframeNote',
-                Cell: props => {
-                    return (
-                        <span data-timeframe={props.original.timeframeNote}>
-                            {props.value || "-"}
-                        </span>
-                    );
-                },
-            },
-            {
-                Header: 'Priority',
-                accessor: 'priority',
-                filterable: true,
-                Cell: props => {
-                    return (
-                        <span data-priority={props.original.priority}>
-                            {props.value}
-                        </span>
-                    );
-                },
-            },
-            */
+        {
+            Header: 'Copies',
+            accessor: 'copies',
+            filterable: true,
+            Cell: props => {
+                return (
+                    <span data-name={props.original.copies}>
+                        {props.value}
+                    </span>
+                );
+            }
+        },
+
             {
                 Header: '',
                 accessor: '',
