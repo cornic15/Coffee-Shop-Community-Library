@@ -139,7 +139,7 @@ class booksTable extends Component {
             {
             Header: 'Title',
             accessor: 'title',
-            // filterable: true,
+             filterable: true,
             Cell: props => {
                 const { original } = props.cell.row;
                 return (
@@ -152,7 +152,7 @@ class booksTable extends Component {
         {
             Header: 'Author',
             accessor: 'author',
-            // filterable: true,
+             filterable: true,
             Cell: props => {
                 const { original } = props.cell.row;
                 return (
@@ -165,7 +165,7 @@ class booksTable extends Component {
         {
             Header: 'Year',
             accessor: 'publication_year',
-            // filterable: true,
+             filterable: true,
             Cell: props => {
                 const { original } = props.cell.row;
                 return (
@@ -177,9 +177,9 @@ class booksTable extends Component {
         },
 
         {
-            Header: 'isbn',
+            Header: 'ISBN',
             accessor: 'isbn',
-            // filterable: true,
+             filterable: true,
             Cell: props => {
                 const { original } = props.cell.row;
                 return (
@@ -194,7 +194,7 @@ class booksTable extends Component {
         {
             Header: 'Available',
             accessor: 'available',
-            // filterable: true,
+             filterable: true,
             Cell: props => {
                 const { original } = props.cell.row;
                 return (

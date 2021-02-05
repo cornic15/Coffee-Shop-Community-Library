@@ -252,8 +252,8 @@ class BookInsert extends Component {
           
          available
         } = this.state;
-       // const book = { name, daysOfWeek, timeframeNote, priority, content };
-       const book = {copies};
+       const book = { isbn, title, author, publication_year, publisher, image_url_s, image_url_m, image_url_l, copies, available };
+      // const book = {copies};
      console.log({book})
 
         this.props.insertSingleBook(book)

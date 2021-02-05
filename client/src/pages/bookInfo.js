@@ -71,7 +71,11 @@ class BookUpdate extends Component {
         this.state = {
             _id: '',
             title: '',
-            copies: '',
+            available: '',
+            isbn: '',
+            publication_year: '',
+
+            
           
           
         };
@@ -132,39 +136,42 @@ class BookUpdate extends Component {
         const {
             _id,
             title,
-            copies,
+            available,
             author,
+            isbn,
+            publication_year
             
         } = this.state;
 
- 
+
         return _id && (
             <Wrapper>
                 <Title>More Info</Title>
 
-              
+              <div style = {{
+                  backgroundColor: 'lightblue',
+                  width: '50%',
+                  justifyContent:'center',
+                  alignItems:'center',
+                  margin: '0 auto'
+                  
+
+              }}>
                 <h3>Title:</h3>
                 <p>{title}</p>
 
                 <h3>Author:</h3>
                 <p>{author}</p>
-                <Label>Update Number of Copies: </Label>
 
-                <InputText
-                    type="text"
-                    value={copies}
-                    onChange={this.handleChangeInputCopies}
-                />
+                <h3>Year:</h3>
+                <p>{publication_year}</p>
 
-                       
-                
+                <h3>ISBN:</h3>
+                <p>{isbn}</p>
 
-             
-
-            
-
-                <Button onClick={this.confirmUpdatebook}>Update book</Button>
-                <CancelButton href={'/books/list'}>Cancel</CancelButton>
+                <h3>Available:</h3>
+                <p>{available}</p>
+                </div>
             </Wrapper>
         );
     }
