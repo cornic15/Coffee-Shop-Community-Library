@@ -139,7 +139,9 @@ class BookUpdate extends Component {
             available,
             author,
             isbn,
-            publication_year
+            publication_year,
+            image_url_m
+            
             
         } = this.state;
 
@@ -157,6 +159,9 @@ class BookUpdate extends Component {
                   
 
               }}>
+
+             <img src ={image_url_m} />
+           
                 <h3>Title:</h3>
                 <p>{title}</p>
 
