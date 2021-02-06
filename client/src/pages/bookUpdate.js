@@ -145,7 +145,7 @@ class BookUpdate extends Component {
  
         return _id && (
             <Wrapper>
-                <Title>Update Boook</Title>
+     <Title>Update Boook</Title>
 
               
                 <h3>Title:</h3>
