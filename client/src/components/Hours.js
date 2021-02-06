@@ -6,7 +6,7 @@ class Hours extends Component {
     render() {
         return (
             <div style = {{
-                backgroundColor: 'chocolate',
+                backgroundColor: 'sienna',
                 position:'fixed',
                
                 left: '0',
