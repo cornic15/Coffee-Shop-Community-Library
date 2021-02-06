@@ -83,7 +83,7 @@ class booksTable extends Component {
 
         this.props.fetchAllBooks()
     }
-
+   
     handleRemovebook = data => {
         const bookId = data;
 
@@ -102,7 +102,9 @@ class booksTable extends Component {
             loading
         } = this.props.bookData || {};
         console.log(books);
-
+        const checkIn = (id) =>{
+            alert(id);
+        }
         const columns = [
             /*
             {
@@ -316,31 +318,43 @@ class booksTable extends Component {
         */
         {
             Header: 'Check In',
-            accessor: '_checkin',
+            accessor: '_checkIn',
             Cell: props => {
                 const { original } = props.cell.row;
                 return (
-                  
-                    <Link to="/bookInfo" className="btn btn-primary" disabled={5===5} >Check In</Link> ); }, }, // ned to change for check in 
-                       
-                    
-                    
+                    <Link
+                   
+                        data-update-id={original._id}
+                        to={`/book/checkInOut/I/${original._id}`} // need to change for check out
+                    >
+                                        <button type="button">
+          Check In
+     </button>
             
+                    </Link>
+                );
+            },
+        },
 
-                    {
-                        Header: 'Check Out',
-                        accessor: 'checkOut',
-                        // filterable: true,
-                        Cell: props => {
-                            const { original } = props.cell.row;
-                            return (
-                                <button  disabled = {original.available == 0}>
-                                   Check Out
-                                </button>
-                            );
-                        }
-                    },
-      
+        {
+            Header: 'Check Out',
+            accessor: '_checkOut',
+            Cell: props => {
+                const { original } = props.cell.row;
+                return (
+                    <Link
+                   
+                        data-update-id={original._id}
+                        to={`/book/checkInOut/O/${original._id}`} // need to change for check out
+                    >
+                        <button type="button" disabled = {original.available == 0}>
+          Check Out
+     </button>
+                      
+                    </Link>
+                );
+            },
+        },
 
         {
             Header: 'Info',
@@ -353,7 +367,9 @@ class booksTable extends Component {
                         data-update-id={original._id}
                         to={`/book/info/${original._id}`} // need to change for check out
                     >
-                        Info
+                                        <button type="button">
+          More Info 
+     </button>
                     </Link>
                 );
             },

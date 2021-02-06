@@ -91,6 +91,7 @@ class BookInsert extends Component {
            // content: '',
         // Title: '',
         //copies: '',
+        book:{},
         isbn:0,
     
         title: '',
@@ -150,10 +151,6 @@ class BookInsert extends Component {
         this.setState({ publisher });
      
     }
-
-
-
-  
 
     handleChangeInputImgS = async event => {
         const image_url_s = event.target.value;
@@ -222,7 +219,7 @@ class BookInsert extends Component {
 */
     handleInsertBook = event => {
         event.preventDefault();
-
+//alert(title);
         const {
            // name,
            // daysOfWeek,
@@ -252,14 +249,19 @@ class BookInsert extends Component {
           
          available
         } = this.state;
-       const book = { isbn, title, author, publication_year, publisher, image_url_s, image_url_m, image_url_l, copies, available };
+        alert(title);
+       const book = { isbn: isbn, title: title, author: author, publication_year:publication_year, 
+        publisher: publisher, image_url_s: image_url_s, image_url_m:image_url_s, image_url_l:image_url_l,
+         copies:copies, available:available };
       // const book = {copies};
      console.log({book})
 
         this.props.insertSingleBook(book)
             .then(resp => {
+                alert(resp);
                 console.log("handleInsertbook: resp");
                 console.log(resp);
+                
                 if (typeof resp === "object" && (resp.status < 300 && resp.status >= 200)) {
                     window.alert('book inserted successfully');
                     this.setState({

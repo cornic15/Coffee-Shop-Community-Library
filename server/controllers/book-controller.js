@@ -74,7 +74,49 @@ getBookById = async (req, res) => {
         return err;
     });
 };
+checkInOut = async (req, res) => {
+    console.log ("Checkin");
+    const action = req.params.action;
+    await book.findOne({ _id: req.params.id }, (err, book) => {
+        if (err) {
+            console.error(`[Hack.Diversity React Template] - 400 in 'getbookById': ${err}`);
+            throw res
+                .status(400)
+                .json({
+                    success: false,
+                    error: err,
+                });
+        }
+        if (!book) {
+            console.error(`[Hack.Diversity React Template] - 404 in 'getbookById': book not found`);
+            return res
+                .status(404)
+                .json({
+                    success: false,
+                    error: 'book not found',
+                });
+        }
+        console.log(`[Hack.Diversity React Template] - 200 in 'getbookById': book fetched!`);
+        if (action=="I")
+           book.available=book.available+1;
+        else
+            book.available=book.available-1;
 
+        book.save();
+        console.log ("check in saved");
+        return res
+            .status(200)
+            .json({
+                success: true,
+                book: book,
+            });
+    }).catch(err => {
+        console.error(`[Hack.Diversity React Template] - caught error in 'getbookById': ${err}`);
+        console.error(err);
+        res.json ("{error: -1}")
+        return err;
+    });
+};
 createbook = (req, res) => {
     const body = req.body;
     // console.log('----------------------- createbook: req -----------------------')
@@ -90,10 +132,11 @@ createbook = (req, res) => {
                 error: 'You must provide an book.',
             });
     }
-
-    const book = new book(body);
-
-    if (!book) {
+console.log ("create:");
+console.log (body);
+    const newBook = new book(body);
+console.log (newBook);
+    if (!newBook) {
         console.error(`[Hack.Diversity React Template] - 400 in 'createbook': 'book' is malformed.`);
         return res
             .status(400)
@@ -105,8 +148,8 @@ createbook = (req, res) => {
 
     // console.log('----------------------- createbook: book -----------------------')
     // console.log(book);
-
-    return book
+    //book.insertOne(body);
+    return newBook
         .save()
         .then(() => {
             console.error(`[Hack.Diversity React Template] - 201 in 'createbook': book created!`);
@@ -114,7 +157,7 @@ createbook = (req, res) => {
                 .status(201)
                 .json({
                     success: true,
-                    id: book._id,
+                    id: newBook._id,
                     message: 'book created!',
                 });
         })
@@ -245,4 +288,5 @@ module.exports = {
     createbook,
     updatebook,
     deletebook,
+    checkInOut
 };

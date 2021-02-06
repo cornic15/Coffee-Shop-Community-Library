@@ -52,15 +52,18 @@ export const fetchSingleBook = (bookId) => {
 };
 
 export const insertSingleBook = book => {
-    return (dispatch) => {
-        dispatch({ type: types.LOADING_SINGLE_BOOK });
+    return () => {
+       // dispatch({ type: types.LOADING_SINGLE_BOOK });
 
         return api.insertBook(book)
             .then(resp => {
                 console.log("insertbook: resp");
                 console.log(resp);
                 if ((resp.data || {}).success) {
-                    const newbook = JSON.parse(resp.config.data);
+                    const newbook = resp.data;
+               
+                    console.log (newbook.id);
+                    /*
                     dispatch({
                         type: types.SET_SINGLE_BOOK,
                         book: {
@@ -68,6 +71,7 @@ export const insertSingleBook = book => {
                             ...newbook
                         }
                     });
+                    */
                 }
                 return resp;
             })
