@@ -64,9 +64,10 @@ class Links extends Component {
                                 to="/books"
                                 className="nav-link"
                             >
-                                books
+                               Books
                             </Link>
                         </Book>
+                        {/*
                         <Book>
                             <Link
                                 to="/book/create"
@@ -75,6 +76,7 @@ class Links extends Component {
                                 Create book
                             </Link>
                         </Book>
+                        */}
                         <Book>
                             <Link to="/books/react-table-v6" className="nav-link">
                             Employees Only

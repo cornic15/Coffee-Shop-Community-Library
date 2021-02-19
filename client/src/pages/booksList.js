@@ -465,6 +465,7 @@ test
 
         return (
             <Wrapper>
+                    <style>{'body { background-color: lightcyan; }'}</style>
                 <CssBaseline />
                 {(
                     (books || []).length > 0

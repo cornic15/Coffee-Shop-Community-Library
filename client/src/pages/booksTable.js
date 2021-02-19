@@ -52,6 +52,7 @@ class booksList extends Component {
                     return (
                         <span data-book-id={props.original.isbn}>
                             {props.original.isbn}
+                     
                         </span>
                     )
                 }
@@ -64,6 +65,7 @@ class booksList extends Component {
                     return (
                         <span data-name={props.original.title}>
                             {props.value}
+                          
                         </span>
                     );
                 }
@@ -126,6 +128,7 @@ class booksList extends Component {
 
         return (
             <Wrapper>
+                    <style>{'body { background-color: lightcyan; }'}</style>
   <Link to="/book/Create" className="btn btn-primary"> Create New Book </Link> 
              
                 {(

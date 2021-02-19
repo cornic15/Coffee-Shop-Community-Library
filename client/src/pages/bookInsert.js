@@ -345,7 +345,18 @@ class BookInsert extends Component {
 
 
                return (
-                <Wrapper>
+                   
+                <div style = {{
+                    backgroundColor: 'lightcyan',
+                    width: '50%',
+                    justifyContent:'center',
+                    alignItems:'center',
+                    margin: '0 auto'
+                    
+  
+                }}>
+                        <style>{'body { background-color: dodgerblue; }'}</style>
+                    
                    <Title>Create a Book</Title> 
     
                     <Label>ISBN: </Label>
@@ -501,7 +512,7 @@ class BookInsert extends Component {
  */}
                 <Button onClick={this.handleInsertBook}>Add book</Button>
                 <CancelButton href={'/books/list'}>Cancel</CancelButton>
-            </Wrapper>
+            </div>
         );
     }
 }

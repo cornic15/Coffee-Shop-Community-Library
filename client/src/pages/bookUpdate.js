@@ -145,7 +145,23 @@ class BookUpdate extends Component {
  
         return _id && (
             <Wrapper>
-     <Title>Update Boook</Title>
+   
+     <style>{'body { background-color: dodgerblue; }'}</style>
+                
+                <Title>Update Boook</Title>
+
+              <div style = {{
+                  backgroundColor: 'lightcyan',
+                  width: '50%',
+                  height: '100%',
+                  justifyContent:'center',
+                  alignItems:'center',
+                  margin: '0 auto',
+                
+                  
+
+              }}>
+
 
               
                 <h3>Title:</h3>
@@ -167,6 +183,7 @@ class BookUpdate extends Component {
 
                 <Button onClick={this.confirmUpdatebook}>Update book</Button>
                 <CancelButton href={'/books/list'}>Cancel</CancelButton>
+                </div>
             </Wrapper>
         );
     }

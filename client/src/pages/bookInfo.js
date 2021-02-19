@@ -148,10 +148,11 @@ class BookUpdate extends Component {
 
         return _id && (
             <Wrapper>
+                    <style>{'body { background-color: dodgerblue; }'}</style>
                 <Title>More Info</Title>
 
               <div style = {{
-                  backgroundColor: 'lightblue',
+                  backgroundColor: 'lightcyan',
                   width: '50%',
                   justifyContent:'center',
                   alignItems:'center',
