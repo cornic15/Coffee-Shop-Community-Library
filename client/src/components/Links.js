@@ -48,7 +48,7 @@ class Links extends Component {
         return (
             <React.Fragment>
                 <HomeWrapper>
-                    <Logo logoStyles={logoStyles} />
+               
                     <Link
                         to="/"
                         className="navbar-brand"
@@ -77,7 +77,7 @@ class Links extends Component {
                         </Book>
                         <Book>
                             <Link to="/books/react-table-v6" className="nav-link">
-                                books (react-table-v6)
+                            Employees Only
                             </Link>
                         </Book>
                     </List>
